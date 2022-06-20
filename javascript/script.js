@@ -14,7 +14,8 @@ let personajeBella = new Image()
 personajeBella.scr = "../images/enemigo-2.png"
 
 
-const moy = new Moy(10, 40, ctx,personajeMoy)
+const moy = new Moy(10, 300, ctx,personajeMoy)
+
 
 const enemigos = []
 
@@ -30,7 +31,7 @@ function empezarJuego(){
 
     setInterval(() => {
         crearEnemigos()
-    }, 3000)
+    }, 500)
 }
 
 
@@ -40,11 +41,22 @@ function actualizarEscenario(){
     ctx.clearRect(0,0,800,800)
 
 
-    crearEnemigos()
 
 
     moy.dibujarse()
-    const enemigo = new Enemigo(300,300, ctx, personajeElvis)
+    
+    crearEnemigos()
+
+
+
+    enemigos.forEach((enemigo) =>{
+        enemigo.x -= 2
+        enemigo.dibujarse()
+        if(enemigo.x === moy.x + 50) {
+            alert("Perdiste nene")
+        }
+        
+    })
     mostrarDatos(moy.vida, moy.x, moy.y)
     requestAnimationFrame(actualizarEscenario)
 }
@@ -56,9 +68,18 @@ function mostrarDatos(vida){
 
 function crearEnemigos(){
     const aleatorio = Math.floor(Math.random()*200)
-    const numeros = [4, 40, 34, 56, 89]
-    if(numeros.includes(aleatorio))
-    console.log("Agrega un enemigo")
+    const numeros = [1, 32, 55, 5, 38, 60, 70]
+    if(numeros.includes(aleatorio)) {
+        console.log("Agrega un enemigo")
+        let tipoEnemigo = personajeElvis
+        if(aleatorio % 2 === 0){
+            tipoEnemigo = personajeBella
+        }
+        const enemigo = new Enemigo(800,300, ctx, tipoEnemigo)
+        enemigos.push(enemigo)
+    }
+    
+
 
 }
 

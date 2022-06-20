@@ -32,6 +32,6 @@ class Personaje{
     }
 
     dibujarse(){
-        this.ctx.drawImage(this.img, this.x, this.y, 70, 70)
+        this.ctx.drawImage(this.img, this.x, this.y, 90, 90)
     }
 }

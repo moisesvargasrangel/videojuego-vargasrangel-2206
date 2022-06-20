@@ -81,8 +81,9 @@ body{
     canvas{
         background-image: url(../images/background-3.jpeg);
         outline-color: rgba(9, 15, 106, 0.745);
+        opacity: 0.988;
         outline-style: outset;
-        background-repeat: no-repeat;
+        background-repeat: repeat;
         background-size:cover;
         border-radius: 8px;   
     }
