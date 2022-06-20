@@ -1,0 +1,54 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start{
+    padding: 15px;
+    background-color: #FFF92D;
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: large;
+    color: #003F73;
+    border-radius: 12px;
+    border: 1px solid #003F73;
+    cursor: pointer;
+}
+
+#start:hover{
+    background-color: #003F73 ;
+    color: #FFF92D ;
+    border: 1px solid #FFF92D;
+}
+
+/* AREA DE JUEGO*/
+canvas{
+    background-image: url(../images/lienzo.jpeg);
+    outline-color: rgba(9, 15, 106, 0.745);
+    outline-style: outset;
+    background-repeat: no-repeat;
+    background-size:cover;
+    border-radius: 8px;   
+}
+
+.noShow{
+    display: none;
+}
