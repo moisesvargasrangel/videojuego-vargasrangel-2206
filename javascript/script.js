@@ -18,6 +18,7 @@ const moy = new Moy(10, 40, ctx,personajeMoy)
 
 const enemigos = []
 
+
 function empezarJuego(){
     const buttonStart = document.getElementById("start")
     
@@ -57,7 +58,7 @@ function crearEnemigos(){
     const aleatorio = Math.floor(Math.random()*200)
     const numeros = [4, 40, 34, 56, 89]
     if(numeros.includes(aleatorio))
-    console.log("Agrega un enemigp")
+    console.log("Agrega un enemigo")
 
 }
 
