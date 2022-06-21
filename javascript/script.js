@@ -15,7 +15,8 @@ personajeBella.scr = "../images/enemigo-2.png";
 
 //CHORRITO DE AGUA
 const aguaImagen = new Image()
-aguaImagen.src = "../images/agua.png"
+aguaImagen.src = "../images/agua.png" 
+
 
 
 
@@ -54,7 +55,7 @@ function actualizarEscenario(){
     crearEnemigos()
 
 
-
+//ARREGLO - ENEMIGOS
     enemigos.forEach((enemigo, index) => { 
         enemigo.x -= 2
         enemigo.dibujarse()
@@ -65,9 +66,18 @@ function actualizarEscenario(){
         
     })
 
-    agua.forEach((agua) => {
+
+//ARREGLO - DISPAROS DE AGUA    
+    agua.forEach((agua, indexAgua) => {
+        agua.x += 2
         agua.dibujarse()
 
+        enemigos.forEach((enemigo, indexEnemigo) => {
+            if(enemigo.x === agua.x){
+                enemigos.splice(indexEnemigo, 1)
+                agua.splice(indexAgua, 1)
+            }
+        })
     })
 
     mostrarDatos(moy.vida, moy.x, moy.y)
@@ -113,7 +123,7 @@ document.addEventListener("keydown", (event) => {
         break;
 
     case " ":
-        const nuevaAgua = moy.disparar(moy.x+70, moy.y+20, aguaImagen)
+        const nuevaAgua = moy.disparar(moy.x+70, moy.y-10, aguaImagen)
         agua.push(nuevaAgua)
         break;
     }

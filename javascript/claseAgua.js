@@ -7,7 +7,7 @@ class chorroAgua {
     }
 
     dibujarse(){
-        this.ctx.drawImage(this.img, this.x, this.y, 10, 5)
+        this.ctx.drawImage(this.img, this.x, this.y, 80, 80)
     }
 
 
