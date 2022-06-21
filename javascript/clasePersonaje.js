@@ -16,12 +16,12 @@ class Personaje{
     }
 
     moverAlFrente(){
-        this.x += 5 
+        this.x += 4 
     }
 
 
     moverAtras(){
-        this.x -= 5 
+        this.x -= 4 
     }
 
     estaVivo(){
