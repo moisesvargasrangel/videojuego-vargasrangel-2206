@@ -13,11 +13,17 @@ personajeElvis.src = "../images/enemigo-1.png";
 let personajeBella = new Image()
 personajeBella.scr = "../images/enemigo-2.png";
 
+//CHORRITO DE AGUA
+const aguaImagen = new Image()
+aguaImagen.src = "../images/agua.png"
+
+
 
 const moy = new Moy(10, 300, ctx,personajeMoy)
 
 
 const enemigos = []
+const agua = []
 
 
 let idFrame;
@@ -28,6 +34,8 @@ function empezarJuego(){
     buttonStart.classList.add("noShow")
     /*buttonStart.style.display = "none"    ESTA ES OTRA OPCION*/
     canvas.classList.remove("noShow")
+
+    configurarAmbiente()
 
     actualizarEscenario()
 
@@ -51,19 +59,26 @@ function actualizarEscenario(){
         enemigo.x -= 2
         enemigo.dibujarse()
         if(enemigo.x === moy.x + 50) {
-            moy.recibirDano(30)
+            moy.recibirDano(50)
             enemigos.splice(index, 1)
         }
         
     })
+
+    agua.forEach((agua) => {
+        agua.dibujarse()
+
+    })
+
+    mostrarDatos(moy.vida, moy.x, moy.y)
+    idFrame = requestAnimationFrame(actualizarEscenario)
 
     if(!moy.estaVivo()){
         cancelAnimationFrame(idFrame)
 
     }
 
-    mostrarDatos(moy.vida, moy.x, moy.y)
-    requestAnimationFrame(actualizarEscenario)
+
 }
 
 function mostrarDatos(vida){
@@ -85,7 +100,7 @@ function crearEnemigos(){
     }
 }
 
-
+function configurarAmbiente() {
 document.addEventListener("keydown", (event) => {
     switch(event.key){
     case "ArrowLeft":
@@ -96,5 +111,11 @@ document.addEventListener("keydown", (event) => {
         console.log("Mover a la derecha")
         moy.moverAlFrente()
         break;
-} 
-})
+
+    case " ":
+        const nuevaAgua = moy.disparar(moy.x+70, moy.y+20, aguaImagen)
+        agua.push(nuevaAgua)
+        break;
+    }
+}) 
+}

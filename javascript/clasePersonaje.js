@@ -24,6 +24,11 @@ class Personaje{
         this.x -= 4 
     }
 
+    disparar(x,y,img){
+        const agua = new chorroAgua(x,y,img,ctx)
+        return agua
+    }
+
     estaVivo(){
         if(this.vida > 0){
             return true
