@@ -1,19 +1,23 @@
 const canvas = document.getElementById("escenario")
 const ctx = canvas.getContext("2d")
 
-//PERSONAJE PRINCIPAL "MOY"
+//---------PERSONAJE PRINCIPAL "MOY" DERECHA
 let personajeMoy = new Image()
 personajeMoy.src = "../images/personaje.png"
 
-//VIILLANO 1 "PERRO 1"
+//---------PERSONAJE PRINCIPAL "MOY" IZQUIERDA
+let personajeMoyIzq = new Image()
+personajeMoyIzq.src = "../images/personaje-izq.png"
+
+//----------VIILLANO 1 "PERRO 1"
 let personajeElvis = new Image()
 personajeElvis.src = "../images/enemigo-1.png";
 
-//VILLANO 2 "PERRO 2"
+//----------VILLANO 2 "PERRO 2"
 let personajeBella = new Image()
 personajeBella.scr = "../images/perrito.png";
 
-//CHORRITO DE AGUA
+//----------CHORRITO DE AGUA
 const aguaImagen = new Image()
 aguaImagen.src = "../images/agua.png" 
 
@@ -55,7 +59,7 @@ function actualizarEscenario(){
     crearEnemigos()
 
 
-//ARREGLO - ENEMIGOS
+//----------------ARREGLO - ENEMIGOS
     enemigos.forEach((enemigo, index) => { 
         enemigo.x -= 2
         enemigo.dibujarse()
@@ -67,7 +71,7 @@ function actualizarEscenario(){
     })
 
 
-//ARREGLO - DISPAROS DE AGUA    
+//---------------ARREGLO - DISPAROS DE AGUA    
     agua.forEach((agua, indexAgua) => {
         agua.x += 2
         agua.dibujarse()
@@ -110,21 +114,40 @@ function crearEnemigos(){
     }
 }
 
+
+//--------------MOVIMIENTOS DE MI PERSONAJE
+
 function configurarAmbiente() {
 document.addEventListener("keydown", (event) => {
     switch(event.key){
     case "ArrowLeft":
         console.log("Mover a la izquierda")
         moy.moverAtras()
+        moy.img = personajeMoyIzq
         break;
     case "ArrowRight":
         console.log("Mover a la derecha")
         moy.moverAlFrente()
+        moy.img = personajeMoy
+        break;
+
+    case "ArrowDown":
+        console.log("Abajo")
+        moy.moverAbajo()
+        moy.img = personajeMoy
+        break;
+    
+    case "ArrowUp":
+        console.log("Arriba")
+        moy.moverArriba()
+        moy.img = personajeMoy
         break;
 
     case " ":
+        if (agua.length < 30){
         const nuevaAgua = moy.disparar(moy.x+70, moy.y-10, aguaImagen)
         agua.push(nuevaAgua)
+    }
         break;
     }
 }) 

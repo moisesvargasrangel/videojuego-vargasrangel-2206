@@ -15,13 +15,24 @@ class Personaje{
         this.vida -= dano
     }
 
+
+
+/*----------MOVIMIENTOS */ 
     moverAlFrente(){
         this.x += 4 
     }
 
-
     moverAtras(){
         this.x -= 4 
+    }
+
+    moverArriba(){
+        this.y -= 45 
+    }
+
+
+    moverAbajo(){
+        this.y += 45 
     }
 
     disparar(x,y,img){
