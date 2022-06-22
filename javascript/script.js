@@ -11,7 +11,7 @@ personajeElvis.src = "../images/enemigo-1.png";
 
 //VILLANO 2 "PERRO 2"
 let personajeBella = new Image()
-personajeBella.scr = "../images/enemigo-2.png";
+personajeBella.scr = "../images/perrito.png";
 
 //CHORRITO DE AGUA
 const aguaImagen = new Image()
@@ -20,7 +20,7 @@ aguaImagen.src = "../images/agua.png"
 
 
 
-const moy = new Moy(10, 300, ctx,personajeMoy)
+const moy = new Moy(10, 300, ctx, personajeMoy)
 
 
 const enemigos = []
@@ -32,9 +32,9 @@ let idFrame;
 function empezarJuego(){
     const buttonStart = document.getElementById("start")
     
-    buttonStart.classList.add("noShow")
+    buttonStart.classList.add("noDisplay")
     /*buttonStart.style.display = "none"    ESTA ES OTRA OPCION*/
-    canvas.classList.remove("noShow")
+    canvas.classList.remove("noDisplay")
 
     configurarAmbiente()
 
@@ -60,7 +60,7 @@ function actualizarEscenario(){
         enemigo.x -= 2
         enemigo.dibujarse()
         if(enemigo.x === moy.x + 50) {
-            moy.recibirDano(50)
+            moy.recibirDano(20)
             enemigos.splice(index, 1)
         }
         
@@ -73,7 +73,7 @@ function actualizarEscenario(){
         agua.dibujarse()
 
         enemigos.forEach((enemigo, indexEnemigo) => {
-            if(enemigo.x === agua.x){
+            if(enemigo.x === agua.x || enemigo.x === agua.x + 2 || enemigo.x === agua.y - 2){
                 enemigos.splice(indexEnemigo, 1)
                 agua.splice(indexAgua, 1)
             }
@@ -114,7 +114,7 @@ function configurarAmbiente() {
 document.addEventListener("keydown", (event) => {
     switch(event.key){
     case "ArrowLeft":
-        console.log("Mover a la izquiera")
+        console.log("Mover a la izquierda")
         moy.moverAtras()
         break;
     case "ArrowRight":
