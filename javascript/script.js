@@ -7,39 +7,35 @@ const ctx = canvas.getContext("2d")
 
 //---------PERSONAJE PRINCIPAL "MOY" DERECHA
 let personajeMoy = new Image()
-personajeMoy.src = "../images/personaje.png"
+personajeMoy.src = "images/personaje.png"
 
 //---------PERSONAJE PRINCIPAL "MOY" IZQUIERDA
 let personajeMoyIzq = new Image()
-personajeMoyIzq.src = "../images/personaje-izq.png"
+personajeMoyIzq.src = "images/personaje-izq.png"
 
 //----------VIILLANO 1 "PERRO 1"
 let personajeElvis = new Image()
-personajeElvis.src = "../images/enemigo-1.png";
+personajeElvis.src = "images/enemigo-1.png";
 
 //----------VILLANO 2 "PERRO 2"
 let personajeBella = new Image()
-personajeBella.src = "../images/perrito.png";
+personajeBella.src = "images/perrito.png";
 
 //----------CHORRITO DE AGUA
 const aguaImagen = new Image()
-aguaImagen.src = "../images/agua.png" 
-
-//----------CHORRITO DE AGUA IZQUIERDA
-const aguaIzqImagen = new Image()
-aguaIzqImagen.src = "../images/agua-izq.png" 
+aguaImagen.src = "images/agua.png" 
 
 //----------AREA DE TRABAJO
 let areaTrabajoImagen = new Image()
-areaTrabajoImagen.src = "../images/area-de-fabricacion.png"
+areaTrabajoImagen.src = "images/area-de-fabricacion.png"
 
 //----------AREA DE ENTREGA
 let areaDeEntregaImagen = new Image()
-areaDeEntregaImagen.src = "../images/area-de-entrega.png"
+areaDeEntregaImagen.src = "images/area-de-entrega.png"
 
 //----------GAME OVER
 let gameOverImagen = new Image()
-gameOverImagen.src = "../images/game-over.png" 
+gameOverImagen.src = "images/game-over.png" 
 
 
 //---------------------------------------------------------------------------------------
