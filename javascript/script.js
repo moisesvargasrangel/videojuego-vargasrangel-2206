@@ -1,32 +1,6 @@
 const canvas = document.getElementById("escenario")
 const ctx = canvas.getContext("2d")
 
-//BOTON
-// Get the modal
-const modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-const btninstrucciones = document.getElementById('instrucciones')
-
-// Get the <span> element that closes the modal
-const span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btninstrucciones.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
 
 
 
@@ -63,6 +37,11 @@ areaTrabajoImagen.src = "../images/area-de-fabricacion.png"
 let areaDeEntregaImagen = new Image()
 areaDeEntregaImagen.src = "../images/area-de-entrega.png"
 
+//----------GAME OVER
+let gameOverImagen = new Image()
+gameOverImagen.src = "../images/game-over.png" 
+
+
 //---------------------------------------------------------------------------------------
 
 const moy = new Moy(10, 300, ctx, personajeMoy);
@@ -71,6 +50,8 @@ const enemigos = []
 const agua = []
 
 let idFrame;
+
+
 
 function empezarJuego(){
     const buttonStart = document.getElementById("start")
@@ -85,7 +66,7 @@ function empezarJuego(){
 
     setInterval(() => {
         crearEnemigos()
-    }, 500)
+    }, 3000)
 }
 
 
@@ -102,7 +83,7 @@ function actualizarEscenario(){
         enemigo.dibujarse()
         if(enemigo.x === moy.x + 70 && (enemigo.y >= moy.y && enemigo.y <= moy.y+90
              || enemigo.y+90 >= moy.y && enemigo.y+90 <= moy.y+90)) {
-            moy.recibirDano(0.5)
+            moy.recibirDano(20)
             enemigos.splice(index, 1)
         }
         
@@ -111,11 +92,12 @@ function actualizarEscenario(){
 
 //---------------ARREGLO - DISPAROS DE AGUA-----------------    
     agua.forEach((balaAgua, indexAgua) => {
-        balaAgua.x += 2
+        balaAgua.x += 3
         balaAgua.dibujarse()
 
         enemigos.forEach((enemigo, indexEnemigo) => {
-            if(enemigo.x === balaAgua.x || enemigo.x === balaAgua.x + 2 || enemigo.x === balaAgua.y - 2){
+            if(enemigo.x === balaAgua.x + 70 && (enemigo.y >= balaAgua.y && enemigo.y <= balaAgua.y+90
+                || enemigo.y+90 >= balaAgua.y && enemigo.y+90 <= balaAgua.y+90)){
                 enemigos.splice(indexEnemigo, 1)
                 agua.splice(indexAgua, 1)
             }
@@ -127,7 +109,6 @@ function actualizarEscenario(){
 
     if(!moy.estaVivo()){
         cancelAnimationFrame(idFrame)
-
     }
 
 
@@ -139,8 +120,8 @@ function mostrarDatos(vida, ){
 }
 
 function crearEnemigos(){
-    const aleatorio = Math.floor(Math.random() * 100)
-    const numeros = [1, 10, 75, 38]
+    const aleatorio = Math.floor(Math.random() * 400)
+    const numeros = [1, 10, 75, 38, 56, 80]
     let Y = Math.floor(Math.random() * (canvas.height - 90) ) 
 
     if(numeros.includes(aleatorio)) {

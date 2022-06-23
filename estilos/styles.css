@@ -60,7 +60,7 @@ body{
     }
 
 /* BOTON CRÉDITOS*/
-#credits{
+/* #credits{
     padding: 15px;
     background-color: #FFF92D;
     font-family: 'Balsamiq Sans', cursive;
@@ -75,7 +75,7 @@ body{
     background-color: #003F73 ;
     color: #FFF92D ;
     border: 1px solid #FFF92D;
-}
+} */
 
 
 /* AREA DE JUEGO*/
@@ -137,5 +137,3 @@ body{
       padding: 20px;
       margin: 5px;
   }
-
-/*---------------------------------------------------------*/

@@ -26,27 +26,33 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div class="textbox">
-                        <h2>Instrucciones</h2>
-                        <p>Instrucciones 1.- 2.- 3.- </p>
+                        <h2>¡Ayuda a Moy a entregar su trabajo!</h2>
+                        <p>
+                            En Movar Workshop tenemos perros que se dedican a cuidar su casa y nuestra área de trabajo
+                            sin embargo, a veces suelen ser agresivos con nosotros.
+                            Ayuda a Moy a esquivarlos para poder entregar los muebles, OJO, ten cuidado de no lastimarlos
+                            con aventarles un poco de agua es suficiente.                       
+                        </p>
+                        <img src="./images/instructions.png" width="200" height="200" style="vertical-align:middle;margin:10px 200px">
                     </div>
                 </div>    
             </div>
-     </section>
+         </section>
 
-        <button id="start" onclick="empezarJuego()">¡Empezar Juego!</button>
+    <button id="start" onclick="empezarJuego()">¡Empezar Juego!</button>
 
-        <section> 
-            <button class="credits" id="credits" onclick="credits()">Créditos</button>
-            <div id="myModal" class="modal">
+        <!-- <section> 
+            <button class="credits" id="creditos" onclick="credits()">Créditos</button>
+            <div id="myCredits" class="modal1">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span class="close1">&times;</span>
                     <div class="textbox">
                         <h2>Créditos</h2>
                         <p>Hecho por...</p>
                     </div>
                 </div>    
             </div>
-     </section> 
+     </section>  -->
 
 
         <canvas width="750px" height="600px" id="escenario" class="noDisplay">
@@ -54,7 +60,7 @@
         </canvas>
     </div>
 
-
+    <script src="./javascript/botonesMenu.js"></script>
     <script src="./javascript/clasePersonaje.js"></script>
     <script src="javascript/claseMoy.js"></script>
     <script src="./javascript/claseEnemigo.js"></script>
