@@ -75,7 +75,7 @@ function actualizarEscenario(){
     crearEnemigos()
 
 
-//----------------ARREGLO - ENEMIGOS/POSICIÓN-----------------------------------
+//----------------ARREGLO-ENEMIGOS/POSICIÓN-----------------------------------
     enemigos.forEach((enemigo, index) => { 
         enemigo.x -= 2
         enemigo.dibujarse()
