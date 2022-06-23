@@ -1,6 +1,37 @@
 const canvas = document.getElementById("escenario")
 const ctx = canvas.getContext("2d")
 
+//BOTON
+// Get the modal
+const modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+const btninstrucciones = document.getElementById('instrucciones')
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btninstrucciones.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+  console.log('tache funciona')
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+
 //---------PERSONAJE PRINCIPAL "MOY" DERECHA
 let personajeMoy = new Image()
 personajeMoy.src = "../images/personaje.png"
@@ -21,15 +52,24 @@ personajeBella.scr = "../images/perrito.png";
 const aguaImagen = new Image()
 aguaImagen.src = "../images/agua.png" 
 
+//----------CHORRITO DE AGUA IZQUIERDA
+const aguaIzqImagen = new Image()
+aguaIzqImagen.src = "../images/agua-izq.png" 
 
+//----------AREA DE TRABAJO
+let areaTrabajoImagen = new Image()
+areaTrabajoImagen.src = "../images/area-de-fabricacion.png"
 
+//----------AREA DE ENTREGA
+let areaDeEntregaImagen = new Image()
+areaDeEntregaImagen.src = "../images/area-de-entrega.png"
 
-const moy = new Moy(10, 300, ctx, personajeMoy)
+//---------------------------------------------------------------------------------------
 
+const moy = new Moy(10, 300, ctx, personajeMoy);
 
 const enemigos = []
 const agua = []
-
 
 let idFrame;
 
@@ -48,6 +88,8 @@ function empezarJuego(){
         crearEnemigos()
     }, 3000)
 }
+ 
+
 
 
 
@@ -63,7 +105,7 @@ function actualizarEscenario(){
     enemigos.forEach((enemigo, index) => { 
         enemigo.x -= 2
         enemigo.dibujarse()
-        if(enemigo.x === moy.x + 50) {
+        if(enemigo.x === moy.x + 50 && enemigo.y === moy.y) {
             moy.recibirDano(20)
             enemigos.splice(index, 1)
         }
@@ -84,7 +126,7 @@ function actualizarEscenario(){
         })
     })
 
-    mostrarDatos(moy.vida, moy.x, moy.y)
+    mostrarDatos(moy.vida, moy.x, moy.y, )
     idFrame = requestAnimationFrame(actualizarEscenario)
 
     if(!moy.estaVivo()){
@@ -95,13 +137,13 @@ function actualizarEscenario(){
 
 }
 
-function mostrarDatos(vida){
+function mostrarDatos(vida, ){
     ctx.font = "30px Balsamiq Sans"
-    ctx.fillText(vida, 600, 40)
+    ctx.fillText(vida, 600, 40,)
 }
 
 function crearEnemigos(){
-    const aleatorio = Math.floor(Math.random()* 200)
+    const aleatorio = Math.floor(Math.random() * 200)
     const numeros = [1, 32, 5, 38, 29]
     if(numeros.includes(aleatorio)) {
         console.log("Agrega un enemigo")
@@ -149,6 +191,7 @@ document.addEventListener("keydown", (event) => {
         agua.push(nuevaAgua)
     }
         break;
+  
     }
 }) 
 }

@@ -42,7 +42,7 @@ body{
 }
 
 /* BOTON INSTRUCCIONES*/
-    #instructions{
+    .instructions{
         padding: 15px;
         background-color: #FFF92D;
         font-family: 'Balsamiq Sans', cursive;
@@ -53,7 +53,7 @@ body{
         cursor: pointer;
     }
 
-    #instructions:hover{
+    .instructions:hover{
         background-color: #003F73 ;
         color: #FFF92D ;
         border: 1px solid #FFF92D;
@@ -92,3 +92,47 @@ body{
     .noDisplay{
         display: none;
     }
+
+   /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(#FFF92D); /* Fallback color */
+    background-color: rgba(#FFF92D); /* Black w/ opacity */
+}
+  
+  /* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+  
+  /* The Close Button */
+  .close {
+    color: rgb(235, 23, 23);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* textbox */
+  .textbox{
+      text-align: justify;
+      padding: 20px;
+      margin: 5px;
+  }

@@ -1,11 +1,11 @@
 
 class Personaje{
-    constructor(x,y,ctx, img){
+    constructor(x, y, ctx, img){
         this.x = x
         this.y = y
         this.vida = 100
         this.velocidad = 1
-        this.ctx = ctx
+        this.ctx = ctx;
         this.img = img;
         this.dibujarse()
 
@@ -27,12 +27,12 @@ class Personaje{
     }
 
     moverArriba(){
-        this.y -= 45 
+        this.y -= 90 
     }
 
 
     moverAbajo(){
-        this.y += 45 
+        this.y += 90 
     }
 
     disparar(x,y,img){
@@ -48,6 +48,6 @@ class Personaje{
     }
 
     dibujarse(){
-        this.ctx.drawImage(this.img, this.x, this.y, 90, 90)
+        this.ctx.drawImage(this.img, this.x, this.y, 70, 90)
     }
 }
