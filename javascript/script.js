@@ -46,6 +46,7 @@ gameOverImagen.src = "../images/game-over.png"
 
 const moy = new Moy(10, 300, ctx, personajeMoy);
 
+
 const enemigos = []
 const agua = []
 
@@ -74,6 +75,7 @@ function actualizarEscenario(){
     console.log("Actualiza");
     ctx.clearRect(0,0,800,800)
     moy.dibujarse()
+
     crearEnemigos()
 
 
@@ -96,7 +98,7 @@ function actualizarEscenario(){
         balaAgua.dibujarse()
 
         enemigos.forEach((enemigo, indexEnemigo) => {
-            if(enemigo.x === balaAgua.x + 70 && (enemigo.y >= balaAgua.y && enemigo.y <= balaAgua.y+90
+            if(enemigo.x === balaAgua.x +70 && (enemigo.y >= balaAgua.y && enemigo.y <= balaAgua.y+90
                 || enemigo.y+90 >= balaAgua.y && enemigo.y+90 <= balaAgua.y+90)){
                 enemigos.splice(indexEnemigo, 1)
                 agua.splice(indexAgua, 1)
