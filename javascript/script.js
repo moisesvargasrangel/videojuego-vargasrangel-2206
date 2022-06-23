@@ -19,7 +19,6 @@ btninstrucciones.onclick = function() {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
-  console.log('tache funciona')
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -86,18 +85,14 @@ function empezarJuego(){
 
     setInterval(() => {
         crearEnemigos()
-    }, 3000)
+    }, 500)
 }
- 
-
-
 
 
 function actualizarEscenario(){
     console.log("Actualiza");
     ctx.clearRect(0,0,800,800)
     moy.dibujarse()
-    
     crearEnemigos()
 
 
@@ -143,15 +138,17 @@ function mostrarDatos(vida, ){
 }
 
 function crearEnemigos(){
-    const aleatorio = Math.floor(Math.random() * 200)
-    const numeros = [1, 32, 5, 38, 29]
+    const aleatorio = Math.floor(Math.random() * 100)
+    const numeros = [1, 10, 75, 38]
+    let Y = Math.floor(Math.random() * (canvas.height - 90) ) 
+
     if(numeros.includes(aleatorio)) {
         console.log("Agrega un enemigo")
         let tipoEnemigo = personajeElvis
         if (aleatorio % 2 === 0) {
             tipoEnemigo = personajeBella
         }
-        const enemigo = new Enemigo(800, 300, ctx, tipoEnemigo)
+        const enemigo = new Enemigo(800, Y, ctx, tipoEnemigo)
         enemigos.push(enemigo)
     }
 }
@@ -163,26 +160,34 @@ function configurarAmbiente() {
 document.addEventListener("keydown", (event) => {
     switch(event.key){
     case "ArrowLeft":
-        console.log("Mover a la izquierda")
-        moy.moverAtras()
-        moy.img = personajeMoyIzq
+        if(moy.x - 10 > 0){
+            moy.moverAtras();console.log("Mover a la izquierda")
+            moy.img = personajeMoyIzq
+        }
+       
         break;
     case "ArrowRight":
-        console.log("Mover a la derecha")
-        moy.moverAlFrente()
-        moy.img = personajeMoy
+        if(moy.x + 100 < canvas.width){
+            moy.moverAlFrente(); console.log("Mover a la derecha")
+            moy.img = personajeMoy
+        }
+        
         break;
 
     case "ArrowDown":
-        console.log("Abajo")
-        moy.moverAbajo()
-        moy.img = personajeMoy
+        if(moy.y + 200 < canvas.height){
+            moy.moverAbajo();  console.log("Abajo")
+            moy.img = personajeMoy
+        }
+        
         break;
     
     case "ArrowUp":
-        console.log("Arriba")
-        moy.moverArriba()
-        moy.img = personajeMoy
+       
+        if(moy.y - 85 > 0 ){
+            moy.moverArriba();  console.log("Arriba")
+            moy.img = personajeMoy
+        }
         break;
 
     case " ":

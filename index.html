@@ -32,8 +32,21 @@
                 </div>    
             </div>
      </section>
+
         <button id="start" onclick="empezarJuego()">¡Empezar Juego!</button>
-        <button id="credits" onclick="credits()">Créditos</button>
+
+        <section> 
+            <button class="credits" id="credits" onclick="credits()">Créditos</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="textbox">
+                        <h2>Créditos</h2>
+                        <p>Hecho por...</p>
+                    </div>
+                </div>    
+            </div>
+     </section> 
 
 
         <canvas width="750px" height="600px" id="escenario" class="noDisplay">
