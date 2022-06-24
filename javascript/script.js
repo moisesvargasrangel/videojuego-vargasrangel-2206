@@ -91,7 +91,7 @@ function actualizarEscenario(){
         enemigo.dibujarse()
         if(enemigo.x === moy.x + 70 && (enemigo.y >= moy.y && enemigo.y <= moy.y+90
              || enemigo.y+90 >= moy.y && enemigo.y+90 <= moy.y+90)) {
-            moy.recibirDano(0.1)
+            moy.recibirDano(20)
             enemigos.splice(index, 1)
         }
         
@@ -187,7 +187,7 @@ document.addEventListener("keydown", (event) => {
         break;
 
     case " ":
-        if (agua.length < 30){
+        if (agua.length < 3){
             const nuevaAgua = moy.disparar(moy.x+70, moy.y-10, aguaImagen)
             agua.push(nuevaAgua)
         }
