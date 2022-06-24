@@ -40,11 +40,12 @@ gameOverImagen.src = "images/game-over.png"
 
 //---------------------------------------------------------------------------------------
 
-const moy = new Moy(10, 300, ctx, personajeMoy);
+const moy = new Moy(10, 500, ctx, personajeMoy);
 
 
 const enemigos = []
 const agua = []
+
 
 let idFrame;
 
@@ -56,6 +57,11 @@ function empezarJuego(){
     buttonStart.classList.add("noDisplay")
     /*buttonStart.style.display = "none"    ESTA ES OTRA OPCION*/
     canvas.classList.remove("noDisplay")
+
+
+    const buttonPlayAgain = document.getElementById("creditos")
+    
+    
 
     configurarAmbiente()
 
@@ -69,9 +75,15 @@ function empezarJuego(){
 
 function actualizarEscenario(){
     console.log("Actualiza");
+
+
+
     ctx.clearRect(0,0,800,800)
     moy.dibujarse()
 
+    const caja = new Caja(630, 10, ctx, areaTrabajoImagen);
+    caja.dibujarse()
+    
     crearEnemigos()
 
 
@@ -112,13 +124,14 @@ function actualizarEscenario(){
 
 }
 
-function mostrarDatos(vida, ){
+function mostrarDatos(vida,){
     ctx.font = "30px Balsamiq Sans"
-    ctx.fillText(vida, 600, 40,)
+    ctx.fillText(vida, 100, 40,)
+     
 }
 
 function crearEnemigos(){
-    const aleatorio = Math.floor(Math.random() * 400)
+    const aleatorio = Math.floor(Math.random() * 200)
     const numeros = [1, 10, 75, 38, 56, 80]
     let Y = Math.floor(Math.random() * (canvas.height - 90) ) 
 
@@ -132,6 +145,7 @@ function crearEnemigos(){
         enemigos.push(enemigo)
     }
 }
+
 
 
 //--------------MOVIMIENTOS DE MI PERSONAJE

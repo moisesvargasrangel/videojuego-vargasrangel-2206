@@ -80,7 +80,7 @@ body{
 
 /* AREA DE JUEGO*/
     canvas{
-        background-image: url(../images/background-3.jpeg);
+        background-image: url(../images/background-cavas.png);
         outline-color: rgba(9, 15, 106, 0.745);
         opacity: 0.988;
         outline-style: outset;

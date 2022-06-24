@@ -4,7 +4,7 @@ class Personaje{
         this.x = x
         this.y = y
         this.vida = 100
-        this.velocidad = 1
+        this.velocidad = 2
         this.ctx = ctx;
         this.img = img;
         this.dibujarse()
