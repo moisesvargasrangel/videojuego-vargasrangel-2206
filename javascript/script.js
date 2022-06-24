@@ -29,7 +29,7 @@ aguaImagen.src = "images/agua.png"
 let areaTrabajoImagen = new Image()
 areaTrabajoImagen.src = "images/area-de-fabricacion.png"
 
-//----------AREA DE ENTREGA
+//----------AREA DE ENTREGA (META)
 let areaDeEntregaImagen = new Image()
 areaDeEntregaImagen.src = "images/area-de-entrega.png"
 
@@ -45,6 +45,8 @@ const moy = new Moy(10, 500, ctx, personajeMoy);
 
 const enemigos = []
 const agua = []
+
+// const areaArreglo = []
 
 
 let idFrame;
@@ -72,16 +74,12 @@ function empezarJuego(){
     }, 3000)
 }
 
+const caja = new Caja(630,10, ctx, areaTrabajoImagen);
 
 function actualizarEscenario(){
-    console.log("Actualiza");
-
-
 
     ctx.clearRect(0,0,800,800)
     moy.dibujarse()
-
-    const caja = new Caja(630, 10, ctx, areaTrabajoImagen);
     caja.dibujarse()
     
     crearEnemigos()
@@ -93,12 +91,20 @@ function actualizarEscenario(){
         enemigo.dibujarse()
         if(enemigo.x === moy.x + 70 && (enemigo.y >= moy.y && enemigo.y <= moy.y+90
              || enemigo.y+90 >= moy.y && enemigo.y+90 <= moy.y+90)) {
-            moy.recibirDano(20)
+            moy.recibirDano(0.1)
             enemigos.splice(index, 1)
         }
         
     })
 
+//---------------COLISION META-----------------
+    if(moy.y <= caja.y+90 && (moy.x >= caja.x && moy.x <= caja.x + 70 
+        || caja.x+70 >= moy.x && caja.x+70 <= moy.x+70 || moy.x+70 >= caja.x)){
+        
+        setTimeout(() => {
+            alert("¡FELICIDADES!")
+        }, 100);
+    }
 
 //---------------ARREGLO - DISPAROS DE AGUA-----------------    
     agua.forEach((balaAgua, indexAgua) => {
@@ -106,7 +112,7 @@ function actualizarEscenario(){
         balaAgua.dibujarse()
 
         enemigos.forEach((enemigo, indexEnemigo) => {
-            if(enemigo.x === balaAgua.x +70 && (enemigo.y >= balaAgua.y && enemigo.y <= balaAgua.y+90
+            if(enemigo.x <= balaAgua.x +70 && (enemigo.y >= balaAgua.y && enemigo.y <= balaAgua.y+90
                 || enemigo.y+90 >= balaAgua.y && enemigo.y+90 <= balaAgua.y+90)){
                 enemigos.splice(indexEnemigo, 1)
                 agua.splice(indexAgua, 1)
@@ -137,7 +143,6 @@ function crearEnemigos(){
     let Y = Math.floor(Math.random() * (canvas.height - 90) ) 
 
     if(numeros.includes(aleatorio)) {
-        console.log("Agrega un enemigo")
         let tipoEnemigo = personajeElvis
         if (aleatorio % 2 === 0) {
             tipoEnemigo = personajeBella
