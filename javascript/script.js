@@ -118,6 +118,7 @@ function actualizarEscenario(){
     idFrame = requestAnimationFrame(actualizarEscenario)
 
     if(!moy.estaVivo()){
+        alert("¡Intentalo de Nuevo!")
         cancelAnimationFrame(idFrame)
     }
 
